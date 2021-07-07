@@ -1,37 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './login.module.css';
 
 const Login = ({auth}) => {
-  const history = useHistory();
 
-
-  const goToMaker = userId => {
-    history.push({
-      pathname: '/maker',
-      state: {id: userId},
-    })
-  }
+  const [onLogout, setonLogout] = useState({});
 
   const onLogin = event => {
     auth. //
       login(event.currentTarget.textContent)
-      .then(data => {
-        goToMaker(data.user.uid);
+      .then(result => {
+        console.log(result);
+        setonLogout(result.credential);    // why?? 비동기 처리 실패 then을 썼는데...
       })
+      .then(() => console.log(onLogout))
   }
 
   useEffect(()=> {
-    auth.onAuthChange(user => {
-      user && goToMaker(user.uid);
-    })
-  })
+
+  }, [])
 
   return (
     <section className={styles.login}>
-      <Header />
+      <Header onLogout={onLogout} />
+
+
+
       <section>
         <h1>Login</h1>
         <ul className={styles.list}>

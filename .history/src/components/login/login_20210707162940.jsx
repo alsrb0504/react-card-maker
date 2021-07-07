@@ -7,6 +7,7 @@ import styles from './login.module.css';
 const Login = ({auth}) => {
   const history = useHistory();
 
+  const [state, setState] = useState({});
 
   const goToMaker = userId => {
     history.push({
@@ -19,14 +20,14 @@ const Login = ({auth}) => {
     auth. //
       login(event.currentTarget.textContent)
       .then(data => {
+        setState(data.user);
         goToMaker(data.user.uid);
       })
   }
 
   useEffect(()=> {
-    auth.onAuthChange(user => {
-      user && goToMaker(user.uid);
-    })
+    auth.onAuthChange(true);
+    
   })
 
   return (

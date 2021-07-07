@@ -14,7 +14,7 @@ function App({auth}) {
             <Login auth={auth} />
           </Route>
           <Route path='/maker'>
-            <Maker auth={auth}/>
+            <Maker />
           </Route>
         </Switch>
       

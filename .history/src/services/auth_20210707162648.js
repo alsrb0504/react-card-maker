@@ -7,13 +7,15 @@ class Auth {
     return firebaseApp.auth().signInWithPopup(authProvider);
   }
 
-  logout() {
-    firebase.auth().signOut();
-  }
-
-  onAuthChange(onUserChanged) {
-    firebase.auth().onAuthStateChanged(user => {
-      onUserChanged(user);
+  onAuthChange(user) {
+    firebaseApp.auth().onAuthStateChanged((user) => {
+      if(user){
+        console.log("login");
+        return true;
+      } else {
+        console.log('logout');
+        return false;
+      }
     })
   }
 }

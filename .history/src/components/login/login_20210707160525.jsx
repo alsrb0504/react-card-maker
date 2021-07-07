@@ -1,37 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './login.module.css';
 
 const Login = ({auth}) => {
-  const history = useHistory();
 
+  const [onLogout, setonLogout] = useState(false);
 
-  const goToMaker = userId => {
-    history.push({
-      pathname: '/maker',
-      state: {id: userId},
-    })
-  }
+  const [state, setState] = useState(false);
 
   const onLogin = event => {
     auth. //
       login(event.currentTarget.textContent)
-      .then(data => {
-        goToMaker(data.user.uid);
-      })
+      .then(result => console.log(result))
+      .then(() => setState(true))
+      .then(() => console.log('hi'));
   }
 
-  useEffect(()=> {
-    auth.onAuthChange(user => {
-      user && goToMaker(user.uid);
-    })
-  })
+
+  useEffect(() => {
+    console.log('useEffect');
+    if(state) {
+      setonLogout(true);
+    }
+  }, [state])
 
   return (
     <section className={styles.login}>
-      <Header />
+      <Header onLogout={onLogout} />
+
+
       <section>
         <h1>Login</h1>
         <ul className={styles.list}>

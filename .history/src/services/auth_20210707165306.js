@@ -11,6 +11,7 @@ class Auth {
     firebase.auth().signOut();
   }
 
+
   onAuthChange(onUserChanged) {
     firebase.auth().onAuthStateChanged(user => {
       onUserChanged(user);

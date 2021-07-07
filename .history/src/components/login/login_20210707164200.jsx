@@ -25,6 +25,7 @@ const Login = ({auth}) => {
 
   useEffect(()=> {
     auth.onAuthChange(user => {
+      console.log(user);
       user && goToMaker(user.uid);
     })
   })

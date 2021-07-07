@@ -13,8 +13,8 @@ function App({auth}) {
           <Route exact path='/' >
             <Login auth={auth} />
           </Route>
-          <Route path='/maker'>
-            <Maker auth={auth}/>
+          <Route path='maker'>
+            <Maker />
           </Route>
         </Switch>
       

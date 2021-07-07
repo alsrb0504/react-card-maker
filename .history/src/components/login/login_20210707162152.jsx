@@ -7,7 +7,6 @@ import styles from './login.module.css';
 const Login = ({auth}) => {
   const history = useHistory();
 
-
   const goToMaker = userId => {
     history.push({
       pathname: '/maker',
@@ -15,23 +14,29 @@ const Login = ({auth}) => {
     })
   }
 
+  const [onLogout, setonLogout] = useState(false);
+
+  const [state, setState] = useState(null);
+
   const onLogin = event => {
     auth. //
       login(event.currentTarget.textContent)
-      .then(data => {
-        goToMaker(data.user.uid);
-      })
+      .then(data => goToMaker(data.user.uid))
   }
 
-  useEffect(()=> {
-    auth.onAuthChange(user => {
-      user && goToMaker(user.uid);
-    })
-  })
+
+  useEffect(() => {
+    console.log('useEffect');
+    if(state) {
+      setonLogout(true);
+    }
+  }, [state])
 
   return (
     <section className={styles.login}>
-      <Header />
+      <Header onLogout={onLogout} />
+
+
       <section>
         <h1>Login</h1>
         <ul className={styles.list}>
