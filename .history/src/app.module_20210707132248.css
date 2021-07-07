@@ -1,0 +1,5 @@
+@value makerGrey from './common/color.css';
+
+.app {
+  width: 100%;
+}
