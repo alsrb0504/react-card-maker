@@ -13,7 +13,6 @@
 }
 
 .container {
-  /* flex: 1 */
   flex: 1 1;
   display: flex;
 }

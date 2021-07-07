@@ -1,0 +1,9 @@
+.maker {
+  max-width: 80rem;
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+}

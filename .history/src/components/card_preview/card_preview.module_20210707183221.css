@@ -1,0 +1,11 @@
+@value makerGreen from '../../common/color.css';
+
+.section {
+  background-color: pink;
+  /* flex: 1 1; */
+  flex-basis: 50%;
+}
+
+.title {
+  width: 100%;
+}

@@ -23,7 +23,6 @@ const Maker = ({auth}) => {
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogout}/>
-      
       <section className={styles.container}>
         <CardMaker/>
         <CardPreview />

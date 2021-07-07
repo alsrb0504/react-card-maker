@@ -13,12 +13,11 @@
 }
 
 .container {
-  /* flex: 1 */
   flex: 1 1;
   display: flex;
 }
 
-@media screen and (max-width: mediaQuery) {
+@media screen (max-width: mediaQuery) {
   .container {
     flex-direction: column;
   }
