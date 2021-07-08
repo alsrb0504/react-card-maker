@@ -1,0 +1,25 @@
+@value makerBlack, makerLightPink, makerColorful from '../../common/color.css';
+
+.card {
+  display: flex;
+  margin: 2rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.Dark {
+  background-color: makerBlack;
+}
+
+.text_part {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  font-size: 1.2rem;
+}
+
+.name {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}

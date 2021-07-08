@@ -1,0 +1,7 @@
+.card {
+  list-style: none;
+  margin-left: 1em;
+  text-align: center;
+
+  display: flex;
+}

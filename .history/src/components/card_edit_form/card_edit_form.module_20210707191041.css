@@ -1,0 +1,24 @@
+.card {
+  width: 100%;
+  list-style: none;
+  margin-left: 1em;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.first {
+  width: 90%;
+  display: flex;
+  flex: 1;
+}
+
+.name,
+.company,
+.theme {
+  flex: 1;
+  font-size: 1rem;
+}
