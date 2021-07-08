@@ -60,9 +60,9 @@ const Maker = ({auth}) => {
   })
 
   // cards
-  const AddCard = (card) => {
-    const updated = [...cards, card];
-    setCards(updated)
+  const AddCard = () => {
+    // setCards = {...cards, card}
+    console.log('addcard')
   }
 
   return (

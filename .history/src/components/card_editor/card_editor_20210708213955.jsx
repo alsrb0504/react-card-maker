@@ -10,9 +10,9 @@ const CardEditor = ({cards, AddCard}) => {
       <h1 className={styles.title}>Card Maker</h1>
       <ul className={styles.ul}>
         {cards.map(card => (
-          <CardEdtiForm key={card.id} card={card}/>
+          <CardEdtiForm card={card}/>
         ))}
-        <CardAddForm AddCard={AddCard}/>
+        <CardAddForm />
       </ul>
     </section>
   )

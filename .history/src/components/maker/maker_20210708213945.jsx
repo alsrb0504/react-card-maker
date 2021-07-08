@@ -25,7 +25,7 @@ const Maker = ({auth}) => {
     {
       id: 2,
       name: 'Bob',
-      company: 'naver',
+      compony: 'naver',
       theme: 'colorful',
       title: 'PM manager',
       email: 'bob24@naver.com',
@@ -36,7 +36,7 @@ const Maker = ({auth}) => {
     {
       id: 3,
       name: 'Ho',
-      company: 'kakao',
+      compony: 'kakao',
       theme: 'light',
       title: 'designer',
       email: 'bob24@naver.com',
@@ -61,8 +61,7 @@ const Maker = ({auth}) => {
 
   // cards
   const AddCard = (card) => {
-    const updated = [...cards, card];
-    setCards(updated)
+    setCards = {...cards, card}
   }
 
   return (
