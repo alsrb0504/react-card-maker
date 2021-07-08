@@ -9,7 +9,7 @@ const Button = ({name, onClick}) => {
   // }
 
   return(
-    <button className={styles.button} onClick={onClick}>{name}</button>
+    <button className={styles.button} onClick={handleClick}>{name}</button>
   )
 }
 

@@ -3,7 +3,7 @@ import styles from './card_edit_form.module.css';
 import Button from '../button/button';
 import ImageFileInput from '../image_file_input/image_file_input';
 
-const CardEdtiForm = ({card, DeleteCard, createOrupdateCard}) => {
+const CardEdtiForm = ({card, DeleteCard, updateCard}) => {
   const {name, company, theme, email, title, message, fileURL} = card;
 
   const nameRef = useRef();
@@ -15,7 +15,7 @@ const CardEdtiForm = ({card, DeleteCard, createOrupdateCard}) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    DeleteCard(card);
+    DeleteCard(card.id);
   };
 
   const onChange = (event) => {
@@ -23,7 +23,7 @@ const CardEdtiForm = ({card, DeleteCard, createOrupdateCard}) => {
       return;
     }
     event.preventDefault();
-    createOrupdateCard( {
+    updateCard( {
       ...card,
       [event.currentTarget.name]: event.currentTarget.value,
     })

@@ -69,12 +69,14 @@ const Maker = ({auth}) => {
     });
   }
 
-  const DeleteCard = (card) => {
-    setCards(cards => {
-      const updated = {...cards};
-      delete updated[card.id];
-      return updated;
-    });
+  const DeleteCard = (id) => {
+    console.log(id);
+    const updated = cards.filter(card => {
+      if(card.id !== id){
+        return card;
+      }
+    })
+    setCards(updated);
   }
 
   return (

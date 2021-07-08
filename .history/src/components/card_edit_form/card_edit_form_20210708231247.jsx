@@ -15,7 +15,7 @@ const CardEdtiForm = ({card, DeleteCard, createOrupdateCard}) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    DeleteCard(card);
+    DeleteCard(card.id);
   };
 
   const onChange = (event) => {

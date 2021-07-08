@@ -59,9 +59,13 @@ const Maker = ({auth}) => {
     })
   })
 
-  
+  // cards
+  const AddCard = (card) => {
+    const updated = [...cards, card];
+    setCards(updated)
+  }
 
-  const createOrupdateCard = (card) => {
+  const updateCard = (card) => {
     setCards(cards => {
       const updated = {...cards};
       updated[card.id] = card;
@@ -69,12 +73,14 @@ const Maker = ({auth}) => {
     });
   }
 
-  const DeleteCard = (card) => {
-    setCards(cards => {
-      const updated = {...cards};
-      delete updated[card.id];
-      return updated;
-    });
+  const DeleteCard = (id) => {
+    console.log(id);
+    const updated = cards.filter(card => {
+      if(card.id !== id){
+        return card;
+      }
+    })
+    setCards(updated);
   }
 
   return (
@@ -84,8 +90,9 @@ const Maker = ({auth}) => {
       <section className={styles.container}>
         <CardEditor 
           cards={cards} 
+          AddCard={AddCard} 
           DeleteCard={DeleteCard} 
-          createOrupdateCard={createOrupdateCard}
+          updateCard={updateCard}
         />
         <CardPreview cards={cards}/>
 

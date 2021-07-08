@@ -10,8 +10,8 @@ import cards from '../../services/cards';
 
 const Maker = ({auth}) => {
   
-  const [cards, setCards] = useState({
-    '1':{
+  const [cards, setCards] = useState([
+    {
       id: 1,
       name: 'Ellie',
       company: 'Samsung',
@@ -22,7 +22,7 @@ const Maker = ({auth}) => {
       fileName: 'ellie',
       fileURL: null,
     },
-    '2':{
+    {
       id: 2,
       name: 'Bob',
       company: 'naver',
@@ -33,7 +33,7 @@ const Maker = ({auth}) => {
       fileName: 'ellie',
       fileURL: null,
     },
-    '3':{
+    {
       id: 3,
       name: 'Ho',
       company: 'kakao',
@@ -44,8 +44,8 @@ const Maker = ({auth}) => {
       fileName: 'ellie',
       fileURL: null,
     }
-  })
-
+  ])
+  
   const history = useHistory();
   const onLogout = () => {
     auth.logout();
@@ -59,22 +59,14 @@ const Maker = ({auth}) => {
     })
   })
 
-  
-
-  const createOrupdateCard = (card) => {
-    setCards(cards => {
-      const updated = {...cards};
-      updated[card.id] = card;
-      return updated;
-    });
+  // cards
+  const AddCard = (card) => {
+    const updated = [...cards, card];
+    setCards(updated)
   }
 
-  const DeleteCard = (card) => {
-    setCards(cards => {
-      const updated = {...cards};
-      delete updated[card.id];
-      return updated;
-    });
+  const DeleteCard = (id) => {
+    console.log(id);
   }
 
   return (
@@ -82,11 +74,7 @@ const Maker = ({auth}) => {
       <Header onLogout={onLogout}/>
       
       <section className={styles.container}>
-        <CardEditor 
-          cards={cards} 
-          DeleteCard={DeleteCard} 
-          createOrupdateCard={createOrupdateCard}
-        />
+        <CardEditor cards={cards} AddCard={AddCard} DeleteCard={DeleteCard}/>
         <CardPreview cards={cards}/>
 
       </section>

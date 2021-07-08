@@ -69,7 +69,7 @@ const Maker = ({auth}) => {
     });
   }
 
-  const DeleteCard = (card) => {
+  const DeleteCard = (id) => {
     setCards(cards => {
       const updated = {...cards};
       delete updated[card.id];
