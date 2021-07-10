@@ -3,6 +3,7 @@ import Button from '../button/button';
 import styles from './card_add_form.module.css';
 
 
+import firebaseDB from '../../services/db';
 
 const CardAddForm = ({FileInput, createOrupdateCard}) => {
   const formRef = useRef();

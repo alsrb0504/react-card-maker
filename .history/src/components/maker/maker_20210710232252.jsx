@@ -15,20 +15,8 @@ const Maker = ({FileInput, auth, cardRepository}) => {
   const onLogout = () => {
     auth.logout();
   }
-  // firebase update
-  useEffect(() => {
-    if(!userId) {
-      return;
-    }
 
-    const stopSync = cardRepository.syncCard(userId, cards => {
-      setCards(cards);
-    })
-    return () => stopSync();
-    }, [userId])
-
-  // auth
-  useEffect(() => {
+  useEffect(()=> {
     auth.onAuthChange((user) => {
       if(user) {
         setUserId(user.uid);

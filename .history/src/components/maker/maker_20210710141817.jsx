@@ -6,34 +6,53 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './maker.module.css';
 
-const Maker = ({FileInput, auth, cardRepository}) => {
-  const historyState = useHistory().location.state;
+const Maker = ({FileInput, auth}) => {
+  const historyState = useHistory().state;
   const [userId, setUserId] = useState(historyState && historyState.id);
-  const [cards, setCards] = useState({})
+  const [cards, setCards] = useState({
+    '1':{
+      id: 1,
+      name: 'Ellie',
+      company: 'Samsung',
+      theme: 'dark',
+      title: 'Software engineer',
+      email: 'dream8442@naver.com',
+      message: "Don't forget to code your dream.",
+      fileName: '',
+      fileURL: null,
+    },
+    '2':{
+      id: 2,
+      name: 'Bob',
+      company: 'naver',
+      theme: 'colorful',
+      title: 'PM manager',
+      email: 'bob24@naver.com',
+      message: "I'm hungry...",
+      fileName: '',
+      fileURL: null,
+    },
+    '3':{
+      id: 3,
+      name: 'Ho',
+      company: 'kakao',
+      theme: 'light',
+      title: 'designer',
+      email: 'bob24@naver.com',
+      message: "I'm hungry...",
+      fileName: '',
+      fileURL: null,
+    }
+  })
 
   const history = useHistory();
   const onLogout = () => {
     auth.logout();
   }
-  // firebase update
-  useEffect(() => {
-    if(!userId) {
-      return;
-    }
 
-    const stopSync = cardRepository.syncCard(userId, cards => {
-      setCards(cards);
-    })
-    return () => stopSync();
-    }, [userId])
-
-  // auth
-  useEffect(() => {
+  useEffect(()=> {
     auth.onAuthChange((user) => {
-      if(user) {
-        setUserId(user.uid);
-        console.log(userId);
-      } else {
+      if(!user) {
         history.push('/');
       }
     })
@@ -45,7 +64,6 @@ const Maker = ({FileInput, auth, cardRepository}) => {
       updated[card.id] = card;
       return updated;
     });
-    cardRepository.saveCard(userId, card);
   }
 
   const DeleteCard = (card) => {
@@ -54,7 +72,6 @@ const Maker = ({FileInput, auth, cardRepository}) => {
       delete updated[card.id];
       return updated;
     });
-    cardRepository.removeCard(userId, card);
   }
 
   return (

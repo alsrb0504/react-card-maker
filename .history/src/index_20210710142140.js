@@ -19,7 +19,7 @@ ReactDOM.render(
     <App 
       FileInput={FileInput} 
       auth={auth} 
-      cardRepository={cardRepository}
+      cardRepository={cardRepository
     />
   </React.StrictMode>,
   document.getElementById('root')

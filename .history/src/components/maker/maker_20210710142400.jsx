@@ -7,7 +7,7 @@ import Header from '../header/header';
 import styles from './maker.module.css';
 
 const Maker = ({FileInput, auth, cardRepository}) => {
-  const historyState = useHistory().location.state;
+  const historyState = useHistory().state;
   const [userId, setUserId] = useState(historyState && historyState.id);
   const [cards, setCards] = useState({})
 
@@ -15,20 +15,8 @@ const Maker = ({FileInput, auth, cardRepository}) => {
   const onLogout = () => {
     auth.logout();
   }
-  // firebase update
-  useEffect(() => {
-    if(!userId) {
-      return;
-    }
 
-    const stopSync = cardRepository.syncCard(userId, cards => {
-      setCards(cards);
-    })
-    return () => stopSync();
-    }, [userId])
-
-  // auth
-  useEffect(() => {
+  useEffect(()=> {
     auth.onAuthChange((user) => {
       if(user) {
         setUserId(user.uid);
@@ -45,7 +33,6 @@ const Maker = ({FileInput, auth, cardRepository}) => {
       updated[card.id] = card;
       return updated;
     });
-    cardRepository.saveCard(userId, card);
   }
 
   const DeleteCard = (card) => {
@@ -54,7 +41,6 @@ const Maker = ({FileInput, auth, cardRepository}) => {
       delete updated[card.id];
       return updated;
     });
-    cardRepository.removeCard(userId, card);
   }
 
   return (

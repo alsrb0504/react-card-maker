@@ -21,11 +21,12 @@ const Maker = ({FileInput, auth, cardRepository}) => {
       return;
     }
 
-    const stopSync = cardRepository.syncCard(userId, cards => {
-      setCards(cards);
-    })
-    return () => stopSync();
-    }, [userId])
+      const stopSync = cardRepository.syncCard(userId, cards => {
+        setCards(cards);
+      })
+      return () => stopSync();
+    }
+  )
 
   // auth
   useEffect(() => {
